@@ -42,7 +42,7 @@ export default defineComponent({
 
     const routeList = {
       home: '/', // 主應用的根路徑
-      sub: '/sub/', // 主應用的 /sub 路徑
+      sub: '/sub', // 主應用的 /sub 路徑
       todo: '/sub/todo', // 主應用的 /sub/todo 路徑
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

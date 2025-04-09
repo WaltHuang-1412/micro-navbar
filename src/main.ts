@@ -18,11 +18,11 @@ const vueLifeCycles = singleSpaVue({
         singleSpa: this.singleSpa,
         */
       })
-    }
+    },
   },
   handleInstance(app) {
     app.use(store).use(router)
-  }
+  },
 })
 
 export const bootstrap = (props: object) => {
