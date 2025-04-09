@@ -16,6 +16,10 @@
       <el-icon><icon-menu /></el-icon>
       <template #title>Home</template>
     </el-menu-item>
+    <el-menu-item :index="routeList.welcome">
+      <el-icon><icon-menu /></el-icon>
+      <template #title>Welcome</template>
+    </el-menu-item>
     <el-menu-item :index="routeList.todo">
       <el-icon><icon-menu /></el-icon>
       <template #title>ToDo</template>
@@ -30,7 +34,7 @@ import { ElMenu, ElMenuItem, ElIcon } from 'element-plus'
 import { Menu as IconMenu } from '@element-plus/icons-vue'
 import { useRouter, useRoute } from 'vue-router'
 export default defineComponent({
-  components: { IconMenu, ElMenu, ElMenuItem,ElIcon },
+  components: { IconMenu, ElMenu, ElMenuItem, ElIcon },
   name: 'CommonMenu',
   setup() {
     const router = useRouter()
@@ -42,14 +46,15 @@ export default defineComponent({
 
     const routeList = {
       home: '/', // 主應用的根路徑
+      welcome: '/welcome', // 主應用的歡迎頁面路徑
       sub: '/sub/', // 主應用的 /sub 路徑
-      todo: '/sub/todo' // 主應用的 /sub/todo 路徑
+      todo: '/sub/todo', // 主應用的 /sub/todo 路徑
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleSelect = (key: string, keyPath: string[]) => {
       router.push({ path: key })
     }
     return { handleSelect, routeList, activityPath }
-  }
+  },
 })
 </script>
