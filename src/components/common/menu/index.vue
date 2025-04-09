@@ -16,10 +16,6 @@
       <el-icon><icon-menu /></el-icon>
       <template #title>Home</template>
     </el-menu-item>
-    <el-menu-item :index="routeList.welcome">
-      <el-icon><icon-menu /></el-icon>
-      <template #title>Welcome</template>
-    </el-menu-item>
     <el-menu-item :index="routeList.todo">
       <el-icon><icon-menu /></el-icon>
       <template #title>ToDo</template>
@@ -46,7 +42,6 @@ export default defineComponent({
 
     const routeList = {
       home: '/', // 主應用的根路徑
-      welcome: '/welcome', // 主應用的歡迎頁面路徑
       sub: '/sub/', // 主應用的 /sub 路徑
       todo: '/sub/todo', // 主應用的 /sub/todo 路徑
     }
