@@ -1,17 +1,15 @@
 <template>
   <div class="navbar">
-    <TheMenu></TheMenu>
+    <router-view></router-view>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import TheMenu from './components/common/menu/index.vue'
+
 export default defineComponent({
   name: 'App',
-  components: {
-    TheMenu
-  }
+  components: {}
 })
 </script>
 
@@ -39,6 +37,10 @@ export default defineComponent({
   .navbar {
     width: 100%;
     height: 100%;
+    .home-view {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>
