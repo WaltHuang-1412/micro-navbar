@@ -6,6 +6,7 @@
   }
 }
 </style>
+
 <template>
   <el-menu
     :default-active="activityPath"
@@ -30,9 +31,9 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { ElMenu, ElMenuItem, ElIcon } from 'element-plus'
-
 import { Menu as IconMenu } from '@element-plus/icons-vue'
 import { useRouter, useRoute } from 'vue-router'
+
 export default defineComponent({
   components: { IconMenu, ElMenu, ElMenuItem, ElIcon },
   name: 'CommonMenu',
@@ -40,7 +41,9 @@ export default defineComponent({
     const router = useRouter()
     const route = useRoute()
 
-    const base = process.env.NODE_ENV === 'production' ? '/micro-root' : ''
+    // ✅ 根據目前網址來動態判斷 base path
+    const isProd = location.pathname.startsWith('/micro-root')
+    const base = isProd ? '/micro-root' : ''
 
     const routeList = {
       home: `${base}/`,
@@ -59,7 +62,12 @@ export default defineComponent({
         router.push({ path: key })
       }
     }
-    return { handleSelect, routeList, activityPath }
+
+    return {
+      handleSelect,
+      routeList,
+      activityPath,
+    }
   },
 })
 </script>
