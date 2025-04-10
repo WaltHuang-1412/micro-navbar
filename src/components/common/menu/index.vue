@@ -20,6 +20,10 @@
       <el-icon><icon-menu /></el-icon>
       <template #title>ToDo</template>
     </el-menu-item>
+    <el-menu-item :index="routeList.login">
+      <el-icon><icon-menu /></el-icon>
+      <template #title>Login</template>
+    </el-menu-item>
   </el-menu>
 </template>
 
@@ -36,18 +40,24 @@ export default defineComponent({
     const router = useRouter()
     const route = useRoute()
 
-    const activityPath = computed(() => {
-      return route.path
-    })
+    const base = process.env.NODE_ENV === 'production' ? '/micro-root' : ''
 
     const routeList = {
-      home: '/', // 主應用的根路徑
-      sub: '/sub', // 主應用的 /sub 路徑
-      todo: '/sub/todo', // 主應用的 /sub/todo 路徑
+      home: `${base}/`,
+      sub: `${base}/sub`,
+      todo: `${base}/sub/todo`,
+      login: `${base}/auth/login`,
+      register: `${base}/auth/register`,
     }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const handleSelect = (key: string, keyPath: string[]) => {
-      router.push({ path: key })
+
+    const activityPath = computed(() => route.path.split('?')[0].split('#')[0])
+
+    const handleSelect = (key: string) => {
+      if (key.startsWith(`${base}/auth`)) {
+        window.location.href = key
+      } else {
+        router.push({ path: key })
+      }
     }
     return { handleSelect, routeList, activityPath }
   },
