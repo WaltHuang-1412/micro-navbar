@@ -46,9 +46,9 @@
       <template #title>Home</template>
     </el-menu-item>
 
-    <el-menu-item :index="routeList.todo">
+    <el-menu-item :index="routeList.plans">
       <el-icon><DocumentAdd /></el-icon>
-      <template #title>ToDo</template>
+      <template #title>Plans</template>
     </el-menu-item>
   </el-menu>
 </template>
@@ -78,7 +78,7 @@ const base = isProd ? '/micro-root' : ''
 const routeList = {
   home: `${base}/`,
   sub: `${base}/sub`,
-  todo: `${base}/sub/todo`,
+  plans: `${base}/sub/plans`,
   login: `${base}/auth/login`,
   register: `${base}/auth/register`,
 }
